@@ -27,6 +27,11 @@ fn main() {
     let termsize = termion::terminal_size().ok();
     let (termwidth, _termheight) = termsize.unwrap();
 
+    let im = if im.width() > im.height() {
+        im.rotate90()
+    } else {
+        im
+    };
     let im = im.resize_exact(
         u32::try_from(termwidth)
             .map(|w| ((im.height() / im.width()) * w))
