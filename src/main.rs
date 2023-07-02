@@ -64,9 +64,9 @@ fn main() {
     let mut stdout = stdout().into_raw_mode().unwrap();
 
     write!(&mut stdout, "{}", clear::All).unwrap();
-    let ten_millis = time::Duration::from_millis(250);
+    let sleep_millis = time::Duration::from_millis(250);
     while let Some(frame) = frames.pop() {
         stdout.write(frame.as_bytes()).unwrap();
-        thread::sleep(ten_millis);
+        thread::sleep(sleep_millis);
     }
 }
